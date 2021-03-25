@@ -14,10 +14,10 @@ mongo = PyMongo(app, uri="mongodb://localhost:27017/mars_app")
 def index():
 
     # Find one record of data from the mongo database
-    hemp_dict = mongo.db.hemis_store.find_one()
+    mars_data = mongo.db.mars_data.find_one()
 
     # Return template and data
-    return render_template("index.html", mars=hemis_store)
+    return render_template("index.html", mars=mars_data)
 
 
 # Route that will trigger the scrape function
@@ -25,11 +25,10 @@ def index():
 def scrape():
 
     # Run the scrape function
-    hempis_store = mongo.db.hempis_store
-    hempis_data=scrape_mars.scrape()
+    mars_data=scrape_mars.scrape()
 
     # Update the Mongo database using update and upsert=True
-    mongo.db.hemp_dict.update({}, hempis_data, upsert=True)
+    mongo.db.mars_data.update({}, mars_data, upsert=True)
 
     # Redirect back to home page
     return redirect("/")
