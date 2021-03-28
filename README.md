@@ -3,4 +3,4 @@ Challenge : Build a web application that scrapes various websites for data relat
 Competencies: 
 Web Scraping, 
 MongoDB,
-Flask App,
+and Flask App.
