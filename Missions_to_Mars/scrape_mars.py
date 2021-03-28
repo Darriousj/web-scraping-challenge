@@ -99,14 +99,17 @@ def scrape():
 
 
     df = tables[0]
-    df.head()
+   
 
+    #df= df.rename(columns={0: "Metric Type", 1: "Data"})
+    df.columns=['Metric Type','Data']
+    df.set_index('Metric Type',inplace=True)
 
 
     # In[16]:
 
 
-    html_table = df.to_html()
+    html_table = df.to_html(classes="table")
     #html_table
 
 
@@ -119,8 +122,7 @@ def scrape():
     # In[18]:
 
 
-    #df saved to html
-    df.to_html('table.html')
+       
 
 
     # In[19]:
@@ -177,4 +179,4 @@ def scrape():
 if __name__ == "__main__":
     data=scrape()
     print(data)
-# %%
+
